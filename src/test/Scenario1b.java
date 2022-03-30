@@ -21,7 +21,7 @@ public class Scenario1b {
             driver.quit();
         }
         catch(Exception e) {
-            System.out.println("Elements not visible / found");
+            System.out.println("Elements not visible / found ");
         }
     }
 }

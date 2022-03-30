@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
 /*Please note: Since the Docker Hub test website is updated as of 30th March, I am trying for a test case of clicking on X of
-   Verify publisher button*/
+   Verify publisher button */
 public class Scenario4a {
     public static void main(String[] args) {
         try {

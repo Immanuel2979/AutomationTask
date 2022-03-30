@@ -8,7 +8,6 @@ public class Scenario1 {
     //private static WebDriver driver;
     public static void main(String[] args) {
         try {
-
             WebDriver driver = new ChromeDriver();
             driver.manage().window().maximize();
             System.setProperty("WebDriver.chrome.driver", ObjectRepository.lnkChromeDriverPath);
