@@ -1,7 +1,6 @@
 package test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 
@@ -12,41 +11,29 @@ public class Scenario1c {
         System.setProperty("WebDriver.chrome.driver", ObjectRepository.lnkChromeDriverPath);
         driver.get(ObjectRepository.txtBoxDockerSearch);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        // Analytics check box
-        if (driver.findElement(By.xpath(ObjectRepository.chkAnalytics)) != null)
-        {
-            System.out.println("Analytics check box is present");
-        } else
-        {
-            System.out.println("Analytics check box is not present");
+        try {
+            // Analytics check box
+            boolean analyticsChkBox = driver.findElement(By.xpath(ObjectRepository.txtAnalytics)).isDisplayed();
+            System.out.println(analyticsChkBox);
+
+            //Base images check box
+            boolean baseImagesChkBox = driver.findElement(By.xpath(ObjectRepository.txtBaseImages)).isDisplayed();
+            System.out.println(baseImagesChkBox);
+
+            //DataBase check box
+            boolean databasesChkBox = driver.findElement(By.xpath(ObjectRepository.txtDatabases)).isDisplayed();
+            System.out.println(databasesChkBox);
+
+            //Storage check box
+            boolean storageChkBox = driver.findElement(By.xpath(ObjectRepository.txtStorage)).isDisplayed();
+            System.out.println(storageChkBox);
         }
-        //Base images check box
-        if (driver.findElement(By.xpath(ObjectRepository.chkBaseImages)) != null)
+        catch(Exception e)
         {
-            System.out.println("Base images check box is present");
+            System.out.println("Elements not visible / found");
+
         }
-        else
-        {
-            System.out.println("Base images check box is not present");
-        }
-        //DataBase check box
-        if (driver.findElement(By.xpath(ObjectRepository.chkDatabases)) != null)
-        {
-            System.out.println("Databases check box is present");
-        }
-        else
-        {
-            System.out.println("Databases check box is not present");
-        }
-        //Storage check box
-        if (driver.findElement(By.xpath(ObjectRepository.chkStorage)) != null)
-        {
-            System.out.println("Storage check box is present");
-        }
-        else
-        {
-            System.out.println("Storage check box is not present");
-        }
+
         driver.quit();
 
     }

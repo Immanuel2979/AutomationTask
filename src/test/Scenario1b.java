@@ -1,38 +1,27 @@
 package test;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 import java.time.Duration;
-
 
 public class Scenario1b {
     public static void main(String[] args)
-
     {
-        WebDriver driver = new ChromeDriver();
-        System.setProperty("webDriver.chrome.driver", ObjectRepository.lnkChromeDriverPath);
-        driver.get(ObjectRepository.txtBoxDockerSearch);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        if(driver.findElement(By.xpath(ObjectRepository.chkVerifyPublisher))!= null)
+        try
         {
-            System.out.println("The check box of Verify publisher is present");
+            WebDriver driver = new ChromeDriver();
+            System.setProperty("webDriver.chrome.driver", ObjectRepository.lnkChromeDriverPath);
+            driver.get(ObjectRepository.txtBoxDockerSearch);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            boolean eleOnePresent = driver.findElement(By.xpath(ObjectRepository.txtVerifyPublisher)).isDisplayed();
+            System.out.println(eleOnePresent);
 
+            boolean eleTwoPresent = driver.findElement(By.xpath(ObjectRepository.txtOfficialImages)).isDisplayed();
+            System.out.println(eleTwoPresent);
+            driver.quit();
         }
-        else
-        {
-            System.out.println("Verify publisher check box is not present");
+        catch(Exception e) {
+            System.out.println("Elements not visible / found");
         }
-        if(driver.findElement(By.xpath(ObjectRepository.chkOfficialImages))!= null){
-
-            System.out.println("Official images check box is present");
-
-        }else {
-
-            System.out.println("Official images check box is not present");
-        }
-        driver.quit();
     }
 }
